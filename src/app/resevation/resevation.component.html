@@ -1,0 +1,103 @@
+
+<!-- <p *ngFor ='let x of datares'>{{x.name}}</p> -->
+
+<div class="jumbotron">
+  <div class="container">
+      <div class="row">
+          <div class="col-md-6 offset-md-3">
+              
+<!-- Add new reservation--------- -->
+<form dir="rtl"  style="text-align:right" [formGroup]='addForm' (ngSubmit)="onSubmit()">
+   
+    <div class="form-group">
+    <label > الاسم الثلاثي</label>
+    <input type="text"  formControlName='name' class="form-control"  [ngClass]="{ 'is-invalid':f.name.touched &&  f.name.errors } "/>
+   <div *ngIf="f.name.invalid && f.name.touched"  class="alert alert-danger">
+        <div *ngIf="f.name.errors.required">  يجب ادخال الاسم </div>
+    </div>
+</div>
+    <div class="form-group">
+    <label >البريدالالكتروني</label>
+    <input type="email"  formControlName='email' class="form-control"  [ngClass]="{ 'is-invalid':f.email.touched && f.email.errors }" />
+    <div *ngIf="f.email.errors  && f.email.touched" class="alert alert-danger">
+        <div *ngIf="f.email.errors.required " >  يجب ادخال البريدالالكتروني </div>
+        <div *ngIf="f.email.errors.email " >   الرجاء ادخال البريد الالكتروني بطريقة صحيحة </div>
+    </div>
+</div>
+  
+<div class="form-row">
+
+    <div class="col">
+  <label >اليوم</label>
+  <input type="date"  formControlName='fristDate'  class="form-control" [ngClass]="{ 'is-invalid': f.fristDate.touched && f.fristDate.errors } "/>
+  <div *ngIf="f.fristDate.errors  && f.fristDate.touched" class="alert alert-danger">
+      <div *ngIf="f.fristDate.errors.required">  الرجاء تحديد يوم الحجز </div>
+  </div>
+  </div>
+
+  <div class="col">
+  <label > عدد الايام</label>
+  <input type="number" formControlName='numOfday' class="form-control" [ngClass]="{ 'is-invalid':f.numOfday.touched && f.numOfday.errors }" />
+  <div *ngIf=" f.numOfday.errors  && f.numOfday.touched" class="alert alert-danger">
+      <div *ngIf="f.numOfday.errors.required">  الرجاء تحديد عدد الأيام </div>
+  </div>
+  </div>
+  </div>
+
+  <div class="form-row">
+
+    <div class="col">
+  <label >من الساعة   </label>
+  <input type="time" formControlName='fristTime'class="form-control"  [ngClass]="{ 'is-invalid': f.fristTime.touched && f.fristTime.errors }" />
+  <div *ngIf="f.fristTime.errors  && f.fristTime.touched" class="alert alert-danger">
+      <div *ngIf="f.fristTime.errors.required">  الرجاء تحديد وقت الحجز </div>
+  </div>
+  </div>
+  <div class="col">
+  <label > عدد الساعات</label>
+  <input type="number"  formControlName='numOfhour' class="form-control" [ngClass]="{ 'is-invalid':f.numOfhour.touched && f.numOfhour.errors }" />
+  <div *ngIf=" f.numOfhour.errors  && f.numOfhour.touched" class="alert alert-danger">
+      <div *ngIf="f.numOfhour.errors.required">   الرجاء تحديد عدد الأيام  </div>
+  </div>
+  </div>
+  </div>
+  <div class="form-group">
+  <label > نوع الحجز</label>
+  <select  (change)="getPrice($event.target.value)" formControlName='typeOfreservation' class="form-control"  [ngClass]="{ 'is-invalid': f.typeOfreservation.touched && f.typeOfreservation.errors }">
+  <div *ngIf="f.typeOfreservation.invalid && f.typeOfreservation.touched" class="alert alert-danger">
+      <div *ngIf="f.typeOfreservation.errors.required">   الرجاء اختيار نوع الحجز </div>
+  </div>
+    <option *ngFor='let type of typeOfreservation' value={{type.price}}>{{type.type}} - {{type.price | currency:"ILS"}}</option>
+  </select>
+ 
+</div>
+  <div class="form-group">
+    <label > عدد الاشخاص</label>
+    <input type="number"  formControlName='numOfpeoples' class="form-control"  [ngClass]="{ 'is-invalid': f.numOfpeoples.touched && f.numOfpeoples.errors }" />
+    <div *ngIf="f.numOfpeoples.errors  && f.numOfpeoples.touched" class="alert alert-danger">
+        <div *ngIf="f.numOfpeoples.errors.required"> الرجاء تحديد عدد الاشخاص </div>
+   
+   
+    </div>
+  </div>
+  <label style="text-align: right"  > اجمالي التكلفة : {{total | currency:"ILS"}}</label>
+  <div class="form-row">
+
+     <div class="col">
+    <button type="button" (click)="reserv()" class="btn btn-dark btn-lg" [disabled]="addForm.invalid">  احجز الآن </button>
+    </div>
+    <div class="col">
+    <button type="submit"  [disabled]="addForm.invalid " class="btn btn-dark btn-lg  "> حفظ  </button>
+    </div>
+    <div class="col">
+    <a class= "navbar-brand "  routerLink='/ManageReservation' > ادارة الحجوزات </a>
+    </div>
+</div>
+
+</form>
+
+</div>
+</div>
+</div>
+</div>
+

@@ -1,0 +1,47 @@
+
+<!-- <div class=" jumbotron text-center"   style="margin-bottom:0"  > -->
+<div    dir="rtl"  class="container  text-center" style="margin-top: 35px" >
+        <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" >البريد الإلكتروني  : </span>
+                </div>
+                <input type="text" [(ngModel)]='email' height="10px"  class="form-control"  aria-describedby="basic-addon3">
+                <button class="btn btn-dark  " (click)='manage()'>عرض </button>  
+            </div>
+        <!-- البريد الإلكتروني :<input    style="text-align:center" [(ngModel)]='email' type="text" /> -->
+        
+    
+    </div>
+      <br>
+      <br>
+<!-- <div class="container"> -->
+        <div class=" jumbotron text-center" >
+          <table dir="rtl"  class="table  table-hover ">
+      
+                <thead  class="thead-light" style="text-align: right">
+                        <th> نوع الحجز </th>
+                        <th>  من تاريخ </th>
+                        <th> الوقت  </th>
+                        <th>  عدد الايام  </th>
+                        <th>  الفترة الزمنية(ساعة)</th>
+                        <th> عدد الأشخاص </th>
+                        <th> </th>
+                        <th>  </th>
+                        
+                    </thead>
+                
+                   
+                   <tr  class="table-light" style="text-align: right" *ngFor ='let data of datares'>
+                        <td> <input   [(ngModel)]= "data.typeOfreservation" value={{data.typeOfreservation}} /> </td>
+                        <td> <input [(ngModel)]= "data.fristDate" value={{data.fristDate}} /> </td>
+                        <td> <input [(ngModel)]= "data.fristTimen"  value={{data.fristTime}} /> </td>
+                        <td> <input  [(ngModel)]= "data.numOfday" value={{data.numOfday}}  /> </td>
+                        <td> <input   [(ngModel)]= "data.numOfhour" value={{data.numOfhour}} /> </td>
+                        <td> <input  [(ngModel)]= "data.numOfpeoples" value={{data.numOfpeoples}} /> </td>
+                        <td><button type="button" (click)=update(data) > تعديل</button></td>
+                        <td><button type="button" (click)=delete(data) > حذف</button></td>
+                        </tr>
+         
+          </table>
+      </div> 
+    

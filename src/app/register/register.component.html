@@ -1,0 +1,38 @@
+  <div class="container "   >
+  <form class="col-6 mx-auto py-5" [formGroup]='registerForm'>
+    <div class="form-group">
+     
+      <!-- <div class="row omb_row-sm-offset-3 omb_loginOr">
+        <div class="col-xs-12 col-sm-6">
+          <hr class="omb_hrOr">
+          <span class="omb_spanOr">or</span>
+        </div>
+      </div> -->
+      <label for="exampleDropdownFormEmail1">Email address</label>
+      <input type="email" class="form-control" id="exampleDropdownFormEmail1" placeholder="email@example.com" formControlName='email'  [ngClass]="{ 'is-invalid':f.email.touched && f.email.errors }">
+      <div *ngIf="f.email.errors  && f.email.touched" class="alert alert-danger">
+      <div *ngIf="f.email.errors.required " > Enter Email address </div>
+      <div *ngIf="f.email.errors.email " >   Enter the correct Email address </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="exampleDropdownFormPassword1">Password</label>
+      <input type="password" class="form-control" id="exampleDropdownFormPassword1" placeholder="Password" formControlName='pass'  [ngClass]="{ 'is-invalid':f.pass.touched }">
+      <div *ngIf="f.pass.errors  && f.pass.touched" class="alert alert-danger">
+          <div *ngIf="f.pass.errors.required " > Enter password </div>
+          
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Confirm Password</label>
+      <input type="password" class="form-control"  placeholder=" confirm Password" formControlName='passconf'  [ngClass]="{ 'is-invalid':f.passconf.touched}">
+      <div *ngIf="f.passconf.errors  && f.passconf.touched" class="alert alert-danger">
+        <div *ngIf="f.passconf.errors.required " > Enter confirm Password </div>
+    </div>
+    </div>
+
+    <button (click)="register()" class="btn btn-primary" style="width:527px"  [disabled]="registerForm.invalid"   >Register </button>
+
+  </form>
+  
+  </div>
