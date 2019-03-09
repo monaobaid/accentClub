@@ -14,7 +14,8 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
 import {HomePageComponent } from './home-page/home-page.component'  
 import {AngularFireAuth, AngularFireAuthModule} from '@angular/fire/auth';
 import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component'
+import { RegisterComponent } from './register/register.component';
+
 
 @NgModule({
   declarations: [
